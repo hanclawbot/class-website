@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班級網站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4A90D9;
+      --primary-dark: #3A7BC8;
+      --secondary: #FF9F43;
+      --success: #26DE81;
+      --danger: #FC5C65;
+      --dark: #2D3436;
+      --light: #F8F9FA;
+      --gray: #636E72;
+      --shadow: 0 4px 15px rgba(0,0,0,0.1);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+      min-height: 100vh;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    header p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    /* Navigation */
+    nav {
+      background: white;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    nav button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: var(--light);
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    nav button:hover, nav button.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--light);
+    }
+
+    .card-header h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    /* Schedule */
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .day-column {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    .day-column.today {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+    }
+
+    .day-column h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .day-column .period {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      margin: 0.2rem 0;
+      background: white;
+      border-radius: 10px;
+      color: var(--gray);
+    }
+
+    .day-column.today .period {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    /* Announcements */
+    .announcement {
+      border-left: 4px solid var(--primary);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: var(--light);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .announcement h4 {
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .announcement .date {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .announcement .content {
+      color: var(--gray);
+    }
+
+    /* Homework */
+    .homework-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--light);
+      border-radius: var(--radius);
+      margin-bottom: 0.8rem;
+    }
+
+    .subject-tag {
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .subject-chinese { background: #FFE4E1; color: #D63031; }
+    .subject-math { background: #E8F5E9; color: #27AE60; }
+    .subject-english { background: #E3F2FD; color: #2980B9; }
+    .subject-science { background: #F3E5F5; color: #8E44AD; }
+    .subject-social { background: #FFF3E0; color: #E67E22; }
+    .subject-other { background: #ECEFF1; color: #607D8B; }
+
+    .homework-content {
+      flex: 1;
+    }
+
+    .homework-due {
+      font-size: 0.8rem;
+      color: var(--danger);
+    }
+
+    /* Album */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .album-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .album-cover {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .album-info {
+      padding: 1rem;
+    }
+
+    .album-info h4 {
+      margin-bottom: 0.3rem;
+    }
+
+    .album-info .date {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: var(--radius);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      padding: 1rem;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .quick-btn {
+      flex: 1;
+      min-width: 150px;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .quick-btn.primary { background: var(--primary); color: white; }
+    .quick-btn.secondary { background: var(--secondary); color: white; }
+    .quick-btn:hover { transform: translateY(-2px); }
+
+    /* Welcome Section */
+    .welcome {
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+
+    .welcome h2 { margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="className">班級網站</h1>
+    <p id="schoolYear">學年度</p>
+  </header>
+
+  <nav>
+    <button class="active" data-section="home">🏠 首頁</button>
+    <button data-section="schedule">📅 功課表</button>
+    <button data-section="announcements">📢 公佈欄</button>
+    <button data-section="homework">📝 每日作業</button>
+    <button data-section="album">📸 活動照片</button>
+  </nav>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="active">
+      <div class="welcome">
+        <h2>🎉 歡迎来到我們的班級網站</h2>
+        <p>這裡有最即時的班級資訊與活動照片</p>
+      </div>
+      
+      <div class="quick-actions">
+        <button class="quick-btn primary" onclick="showSection('schedule')">
+          📅 今日功課表
+        </button>
+        <button class="quick-btn secondary" onclick="showSection('homework')">
+          📝 今日作業
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>📢 最新公告</h3>
+        </div>
+        <div id="latestAnnouncements"></div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule">
+      <div class="card">
+        <div class="card-header">
+          <h3>📅 本週功課表</h3>
+        </div>
+        <div class="schedule-grid" id="scheduleGrid"></div>
+      </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section id="announcements">
+      <div class="card">
+        <div class="card-header">
+          <h3>📢 公佈欄</h3>
+        </div>
+        <div id="announcementsList"></div>
+      </div>
+    </section>
+
+    <!-- Homework Section -->
+    <section id="homework">
+      <div class="card">
+        <div class="card-header">
+          <h3>📝 每日作業</h3>
+        </div>
+        <div id="homeworkList"></div>
+      </div>
+    </section>
+
+    <!-- Album Section -->
+    <section id="album">
+      <div class="card">
+        <div class="card-header">
+          <h3>📸 活動照片</h3>
+        </div>
+        <div class="album-grid" id="albumGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">❮</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">❯</button>
+  </div>
+
+  <footer>
+    <p>© 班級網站 | 讓學習更有趣</p>
+  </footer>
+
+  <script>
+    let classData = {};
+    let currentAlbum = [];
+    let currentPhotoIndex = 0;
+
+    // Load data
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => {
+        classData = data;
+        init();
+      })
+      .catch(err => console.error('載入資料失敗:', err));
+
+    function init() {
+      // Header
+      document.getElementById('className').textContent = classData.school.name;
+      document.getElementById('schoolYear').textContent = `學年度 ${classData.school.year}`;
+
+      // Render sections
+      renderSchedule();
+      renderAnnouncements();
+      renderHomework();
+      renderAlbum();
+      renderHome();
+    }
+
+    // Navigation
+    document.querySelectorAll('nav button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showSection(btn.dataset.section);
+      });
+    });
+
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(sectionId).classList.add('active');
+      document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Get day name
+    function getDayName(date) {
+      const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+      return days[date.getDay()];
+    }
+
+    // Render Schedule
+    function renderSchedule() {
+      const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+      const dayNames = ['週一', '週二', '週三', '週四', '週五'];
+      const today = getDayName(new Date());
+      
+      let html = '';
+      days.forEach((day, i) => {
+        const isToday = day === today;
+        const periods = classData.schedule[day] || [];
+        
+        html += `
+          <div class="day-column ${isToday ? 'today' : ''}">
+            <h4>${dayNames[i]}</h4>
+            ${periods.map((p, j) => `<div class="period">${j+1}. ${p}</div>`).join('')}
+          </div>
+        `;
+      });
+      document.getElementById('scheduleGrid').innerHTML = html;
+    }
+
+    // Render Announcements
+    function renderAnnouncements() {
+      const sorted = [...classData.announcements].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      document.getElementById('announcementsList').innerHTML = sorted.map(a => `
+        <div class="announcement">
+          <h4>${a.title}</h4>
+          <div class="date">📅 ${a.date}</div>
+          <div class="content">${a.content}</div>
+        </div>
+      `).join('');
+
+      // Latest for home
+      document.getElementById('latestAnnouncements').innerHTML = sorted.slice(0, 3).map(a => `
+        <div class="announcement">
+          <h4>${a.title}</h4>
+          <div class="date">📅 ${a.date}</div>
+        </div>
+      `).join('');
+    }
+
+    // Get subject class
+    function getSubjectClass(subject) {
+      const map = {
+        '國語': 'subject-chinese',
+        '數學': 'subject-math',
+        '英文': 'subject-english',
+        '自然': 'subject-science',
+        '社會': 'subject-social'
+      };
+      return map[subject] || 'subject-other';
+    }
+
+    // Render Homework
+    function renderHomework() {
+      const sorted = [...classData.homework].sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      document.getElementById('homeworkList').innerHTML = sorted.map(h => `
+        <div class="homework-item">
+          <span class="subject-tag ${getSubjectClass(h.subject)}">${h.subject}</span>
+          <div class="homework-content">
+            <div>${h.content}</div>
+            <div class="homework-due">📅 缴交日期: ${h.due}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Album
+    function renderAlbum() {
+      document.getElementById('albumGrid').innerHTML = classData.albums.map((album, index) => `
+        <div class="album-card" onclick="openAlbum(${index})">
+          <div class="album-cover" style="background-image: url('${album.cover}')"></div>
+          <div class="album-info">
+            <h4>${album.title}</h4>
+            <div class="date">📅 ${album.date}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Album functions
+    function openAlbum(index) {
+      currentAlbum = classData.albums[index].photos;
+      currentPhotoIndex = 0;
+      showLightbox();
+    }
+
+    function showLightbox() {
+      document.getElementById('lightboxImg').src = currentAlbum[currentPhotoIndex];
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function navigateLightbox(direction) {
+      currentPhotoIndex = (currentPhotoIndex + direction + currentAlbum.length) % currentAlbum.length;
+      showLightbox();
+    }
+
+    // Close lightbox on background click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    function renderHome() {
+      // Already rendered in other functions
+    }
+  </script>
+</body>
+</html>

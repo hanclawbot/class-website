@@ -1,0 +1,66 @@
+{
+  "school": {
+    "name": "○○國中一年甲班",
+    "year": 115
+  },
+  "announcements": [
+    {
+      "date": "2026-03-05",
+      "title": "🎉 開學日注意事項",
+      "content": "請同學們於上午 8:00 前到校，穿著整齊制服。"
+    },
+    {
+      "date": "2026-03-04",
+      "title": "📋 第一次段考範圍",
+      "content": "國語：第1-3課；數學：第一章；英文：Unit 1-2"
+    }
+  ],
+  "homework": [
+    {
+      "date": "2026-03-05",
+      "subject": "國語",
+      "content": "L3生字簿寫3遍",
+      "due": "2026-03-06"
+    },
+    {
+      "date": "2026-03-05",
+      "subject": "數學",
+      "content": "課本 P.12-15",
+      "due": "2026-03-06"
+    },
+    {
+      "date": "2026-03-05",
+      "subject": "英文",
+      "content": "單字表抄寫 1-10",
+      "due": "2026-03-07"
+    }
+  ],
+  "schedule": {
+    "monday": ["國語", "數學", "英文", "自然", "社會", "綜合"],
+    "tuesday": ["數學", "國語", "自然", "數學", "藝文", "體育"],
+    "wednesday": ["英文", "社會", "國語", "數學", "自然", "綜合"],
+    "thursday": ["國語", "英文", "數學", "社會", "體育", "自然"],
+    "friday": ["數學", "綜合", "國語", "英文", "社會", "藝文"]
+  },
+  "albums": [
+    {
+      "title": "🎊 開學日",
+      "date": "2026-02-18",
+      "cover": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400",
+      "photos": [
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800",
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
+        "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800"
+      ]
+    },
+    {
+      "title": "🏃 運動會",
+      "date": "2025-11-15",
+      "cover": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400",
+      "photos": [
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800",
+        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800"
+      ]
+    }
+  ]
+}
