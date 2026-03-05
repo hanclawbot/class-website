@@ -21,11 +21,7 @@
       --radius: 12px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
@@ -35,7 +31,6 @@
       line-height: 1.6;
     }
 
-    /* Header */
     header {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       color: white;
@@ -47,18 +42,9 @@
       z-index: 100;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
+    header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+    header p { opacity: 0.9; font-size: 0.95rem; }
 
-    header p {
-      opacity: 0.9;
-      font-size: 0.95rem;
-    }
-
-    /* Navigation */
     nav {
       background: white;
       padding: 0.8rem;
@@ -86,28 +72,20 @@
       color: white;
     }
 
-    /* Main Content */
     main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 1.5rem;
     }
 
-    section {
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-
-    section.active {
-      display: block;
-    }
+    section { display: none; animation: fadeIn 0.4s ease; }
+    section.active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Cards */
     .card {
       background: white;
       border-radius: var(--radius);
@@ -125,10 +103,7 @@
       border-bottom: 2px solid var(--light);
     }
 
-    .card-header h3 {
-      font-size: 1.2rem;
-      color: var(--primary);
-    }
+    .card-header h3 { font-size: 1.2rem; color: var(--primary); }
 
     /* Schedule */
     .schedule-grid {
@@ -138,9 +113,7 @@
     }
 
     @media (max-width: 768px) {
-      .schedule-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .schedule-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .day-column {
@@ -155,11 +128,7 @@
       color: white;
     }
 
-    .day-column h4 {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
+    .day-column h4 { font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600; }
 
     .day-column .period {
       font-size: 0.75rem;
@@ -184,20 +153,9 @@
       border-radius: 0 var(--radius) var(--radius) 0;
     }
 
-    .announcement h4 {
-      color: var(--dark);
-      margin-bottom: 0.3rem;
-    }
-
-    .announcement .date {
-      font-size: 0.8rem;
-      color: var(--gray);
-      margin-bottom: 0.5rem;
-    }
-
-    .announcement .content {
-      color: var(--gray);
-    }
+    .announcement h4 { color: var(--dark); margin-bottom: 0.3rem; }
+    .announcement .date { font-size: 0.8rem; color: var(--gray); margin-bottom: 0.5rem; }
+    .announcement .content { color: var(--gray); }
 
     /* Homework */
     .homework-item {
@@ -225,14 +183,8 @@
     .subject-social { background: #FFF3E0; color: #E67E22; }
     .subject-other { background: #ECEFF1; color: #607D8B; }
 
-    .homework-content {
-      flex: 1;
-    }
-
-    .homework-due {
-      font-size: 0.8rem;
-      color: var(--danger);
-    }
+    .homework-content { flex: 1; }
+    .homework-due { font-size: 0.8rem; color: var(--danger); }
 
     /* Album */
     .album-grid {
@@ -250,28 +202,11 @@
       transition: transform 0.3s ease;
     }
 
-    .album-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .album-cover {
-      height: 180px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .album-info {
-      padding: 1rem;
-    }
-
-    .album-info h4 {
-      margin-bottom: 0.3rem;
-    }
-
-    .album-info .date {
-      font-size: 0.8rem;
-      color: var(--gray);
-    }
+    .album-card:hover { transform: translateY(-5px); }
+    .album-cover { height: 180px; background-size: cover; background-position: center; }
+    .album-info { padding: 1rem; }
+    .album-info h4 { margin-bottom: 0.3rem; }
+    .album-info .date { font-size: 0.8rem; color: var(--gray); }
 
     /* Lightbox */
     .lightbox {
@@ -287,16 +222,8 @@
       align-items: center;
     }
 
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: var(--radius);
-    }
-
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90%; max-height: 90%; border-radius: var(--radius); }
     .lightbox-close {
       position: absolute;
       top: 20px;
@@ -324,7 +251,6 @@
     .lightbox-prev { left: 20px; }
     .lightbox-next { right: 20px; }
 
-    /* Footer */
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -332,7 +258,6 @@
       font-size: 0.85rem;
     }
 
-    /* Quick Actions */
     .quick-actions {
       display: flex;
       gap: 1rem;
@@ -360,7 +285,6 @@
     .quick-btn.secondary { background: var(--secondary); color: white; }
     .quick-btn:hover { transform: translateY(-2px); }
 
-    /* Welcome Section */
     .welcome {
       text-align: center;
       padding: 2rem;
@@ -371,6 +295,30 @@
     }
 
     .welcome h2 { margin-bottom: 0.5rem; }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+    }
+
+    /* Admin Link */
+    .admin-link {
+      text-align: center;
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--light);
+      border-radius: var(--radius);
+    }
+
+    .admin-link a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .admin-link a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -410,6 +358,12 @@
         </div>
         <div id="latestAnnouncements"></div>
       </div>
+
+      <div class="admin-link">
+        <a href="#" onclick="alert('請聯繫網站管理員更新資料'); return false;">
+          🔧 資料有誤？聯繫管理員
+        </a>
+      </div>
     </section>
 
     <!-- Schedule Section -->
@@ -418,7 +372,7 @@
         <div class="card-header">
           <h3>📅 本週功課表</h3>
         </div>
-        <div class="schedule-grid" id="scheduleGrid"></div>
+        <div id="scheduleGrid"></div>
       </div>
     </section>
 
@@ -451,6 +405,11 @@
         <div class="album-grid" id="albumGrid"></div>
       </div>
     </section>
+
+    <!-- Loading -->
+    <div id="loading" class="loading">
+      ⏳ 載入中...
+    </div>
   </main>
 
   <!-- Lightbox -->
@@ -466,37 +425,157 @@
   </footer>
 
   <script>
-    let classData = {};
+    // ====== 設定區 ======
+    // 在這裡填入你的 Google Sheets ID
+    // 從 Google Sheets 網址取得：docs.google.com/spreadsheets/d/【這裡】/edit
+    const SPREADSHEET_ID = '1Es2mamYCk_ZR-sMcGn1LRz9v5H45UZRbyIWdEJ0Zb7c';
+    
+    // 發布到網路上的 CSV 連結
+    // 請在 Google Sheets 中：檔案 > 發布到網路 > 發布為 CSV
+    // 然後把連結貼到下面
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTypvR8qKL6YOMip8lfxFMMBLmmypVfnrHkhARaRdRwZ0LX3ay2R08ypId_sWnG7RMexaAGxFjYgDXj/pub?output=csv';
+    // ====================
+
+    let classData = {
+      school: { name: '載入中...', year: '' },
+      announcements: [],
+      homework: [],
+      schedule: {},
+      albums: []
+    };
+
     let currentAlbum = [];
     let currentPhotoIndex = 0;
 
-    // Load data
-    fetch('data.json')
-      .then(res => res.json())
-      .then(data => {
-        classData = data;
+    // Load data from Google Sheets
+    async function loadData() {
+      try {
+        const response = await fetch(SHEET_CSV_URL);
+        const csvText = await response.text();
+        const data = parseCSV(csvText);
+        processData(data);
+        
+        document.getElementById('loading').style.display = 'none';
         init();
-      })
-      .catch(err => console.error('載入資料失敗:', err));
+      } catch (err) {
+        console.error('載入資料失敗:', err);
+        document.getElementById('loading').textContent = '⚠️ 載入失敗，請聯繫管理員';
+      }
+    }
+
+    // Parse CSV
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      return lines.map(line => {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let char of line) {
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            result.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        result.push(current.trim());
+        return result;
+      });
+    }
+
+    // Process CSV data
+    function processData(rows) {
+      if (rows.length < 2) return;
+
+      // 班級資訊 (前兩行)
+      // A1: 班級名稱, 學年度
+      // A2: 班級名稱, 學年度
+      const infoRow = rows[1] || [];
+      classData.school = {
+        name: infoRow[0] || '班級網站',
+        year: infoRow[1] || ''
+      };
+
+      // 找到各區塊的位置
+      let announcementsStart = -1;
+      let homeworkStart = -1;
+      let scheduleStart = -1;
+
+      for (let i = 0; i < rows.length; i++) {
+        const firstCell = rows[i][0] || '';
+        if (firstCell === '公佈欄') announcementsStart = i + 1;
+        if (firstCell === '每日作業') homeworkStart = i + 1;
+        if (firstCell === '功課表') scheduleStart = i + 1;
+      }
+
+      // 解析公佈欄
+      if (announcementsStart > 0) {
+        classData.announcements = [];
+        for (let i = announcementsStart; i < rows.length; i++) {
+          const row = rows[i];
+          if (row[0] && row[0] !== '每日作業' && row[0] !== '功課表' && row[0].length > 0) {
+            // 跳過標題行
+            if (row[0] !== '日期') {
+              classData.announcements.push({
+                date: row[0] || '',
+                title: row[1] || '',
+                content: row[2] || ''
+              });
+            }
+          }
+        }
+      }
+
+      // 解析每日作業
+      if (homeworkStart > 0) {
+        classData.homework = [];
+        for (let i = homeworkStart; i < rows.length; i++) {
+          const row = rows[i];
+          if (row[0] && row[0] !== '功課表' && row[0].length > 0) {
+            if (row[0] !== '日期') {
+              classData.homework.push({
+                date: row[0] || '',
+                subject: row[1] || '',
+                content: row[2] || '',
+                due: row[3] || ''
+              });
+            }
+          }
+        }
+      }
+
+      // 解析功課表
+      if (scheduleStart > 0) {
+        classData.schedule = {};
+        for (let i = scheduleStart; i < rows.length && i < scheduleStart + 5; i++) {
+          const row = rows[i];
+          if (row[0] && row[0] !== '星期') {
+            const dayMap = { '週一': 'monday', '週二': 'tuesday', '週三': 'wednesday', '週四': 'thursday', '週五': 'friday' };
+            const dayKey = dayMap[row[0]];
+            if (dayKey) {
+              classData.schedule[dayKey] = row.slice(1, 7).filter(s => s);
+            }
+          }
+        }
+      }
+    }
 
     function init() {
-      // Header
       document.getElementById('className').textContent = classData.school.name;
       document.getElementById('schoolYear').textContent = `學年度 ${classData.school.year}`;
 
-      // Render sections
       renderSchedule();
       renderAnnouncements();
       renderHomework();
       renderAlbum();
-      renderHome();
     }
 
     // Navigation
     document.querySelectorAll('nav button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        showSection(btn.dataset.section);
-      });
+      btn.addEventListener('click', () => showSection(btn.dataset.section));
     });
 
     function showSection(sectionId) {
@@ -509,13 +588,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Get day name
     function getDayName(date) {
       const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
       return days[date.getDay()];
     }
 
-    // Render Schedule
     function renderSchedule() {
       const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
       const dayNames = ['週一', '週二', '週三', '週四', '週五'];
@@ -536,19 +613,19 @@
       document.getElementById('scheduleGrid').innerHTML = html;
     }
 
-    // Render Announcements
     function renderAnnouncements() {
       const sorted = [...classData.announcements].sort((a, b) => new Date(b.date) - new Date(a.date));
       
-      document.getElementById('announcementsList').innerHTML = sorted.map(a => `
-        <div class="announcement">
-          <h4>${a.title}</h4>
-          <div class="date">📅 ${a.date}</div>
-          <div class="content">${a.content}</div>
-        </div>
-      `).join('');
+      document.getElementById('announcementsList').innerHTML = sorted.length > 0 
+        ? sorted.map(a => `
+            <div class="announcement">
+              <h4>${a.title}</h4>
+              <div class="date">📅 ${a.date}</div>
+              <div class="content">${a.content}</div>
+            </div>
+          `).join('')
+        : '<p style="color: var(--gray);">目前沒有公告</p>';
 
-      // Latest for home
       document.getElementById('latestAnnouncements').innerHTML = sorted.slice(0, 3).map(a => `
         <div class="announcement">
           <h4>${a.title}</h4>
@@ -557,7 +634,6 @@
       `).join('');
     }
 
-    // Get subject class
     function getSubjectClass(subject) {
       const map = {
         '國語': 'subject-chinese',
@@ -569,24 +645,34 @@
       return map[subject] || 'subject-other';
     }
 
-    // Render Homework
     function renderHomework() {
       const sorted = [...classData.homework].sort((a, b) => new Date(b.date) - new Date(a.date));
       
-      document.getElementById('homeworkList').innerHTML = sorted.map(h => `
-        <div class="homework-item">
-          <span class="subject-tag ${getSubjectClass(h.subject)}">${h.subject}</span>
-          <div class="homework-content">
-            <div>${h.content}</div>
-            <div class="homework-due">📅 缴交日期: ${h.due}</div>
-          </div>
-        </div>
-      `).join('');
+      document.getElementById('homeworkList').innerHTML = sorted.length > 0
+        ? sorted.map(h => `
+            <div class="homework-item">
+              <span class="subject-tag ${getSubjectClass(h.subject)}">${h.subject}</span>
+              <div class="homework-content">
+                <div>${h.content}</div>
+                <div class="homework-due">📅 缴交日期: ${h.due}</div>
+              </div>
+            </div>
+          `).join('')
+        : '<p style="color: var(--gray);">目前沒有作業</p>';
     }
 
-    // Render Album
     function renderAlbum() {
-      document.getElementById('albumGrid').innerHTML = classData.albums.map((album, index) => `
+      // 目前相簿用靜態資料，未來可從 Sheets 擴充
+      const defaultAlbums = [
+        {
+          title: '🎊 開學日',
+          date: '2026-02-18',
+          cover: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400',
+          photos: ['https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800']
+        }
+      ];
+      
+      document.getElementById('albumGrid').innerHTML = defaultAlbums.map((album, index) => `
         <div class="album-card" onclick="openAlbum(${index})">
           <div class="album-cover" style="background-image: url('${album.cover}')"></div>
           <div class="album-info">
@@ -597,9 +683,11 @@
       `).join('');
     }
 
-    // Album functions
     function openAlbum(index) {
-      currentAlbum = classData.albums[index].photos;
+      const defaultAlbums = [
+        { photos: ['https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800'] }
+      ];
+      currentAlbum = defaultAlbums[index].photos;
       currentPhotoIndex = 0;
       showLightbox();
     }
@@ -618,12 +706,10 @@
       showLightbox();
     }
 
-    // Close lightbox on background click
     document.getElementById('lightbox').addEventListener('click', (e) => {
       if (e.target.id === 'lightbox') closeLightbox();
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (!document.getElementById('lightbox').classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -631,9 +717,8 @@
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
 
-    function renderHome() {
-      // Already rendered in other functions
-    }
+    // Start loading
+    loadData();
   </script>
 </body>
 </html>
